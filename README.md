@@ -1,4 +1,10 @@
 <h1 align="center">Hi 👋, I'm Amir Hayat</h1>
+
+<a href="https://github.com/itsaami">
+    <img src="https://readme-typing-svg.herokuapp.com/?lines=👨‍💻+Full+Stack+Developer;🌟+MEAN+and+MERN+Stack+Developer;🚀+Entrepreneur+and+Software+House+Owner;🔗+GitHub+Profile:+itsaami&font=Roboto&size=32&duration=3500&pause=500&center=true&vCenter=true&width=700&height=60&color=007bff">
+</a>
+
+
 <h3 align="center">Welcome to my GitHub profile! I'm Syed Amir Hayat, a passionate and skilled full-stack web developer with expertise in both front-end and back-end technologies. With a strong foundation in modern web development, I bring innovative ideas to life by crafting scalable, efficient, and user-friendly digital solutions.</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=itsaami&label=Profile%20views&color=0e75b6&style=flat" alt="itsaami" /> </p>
