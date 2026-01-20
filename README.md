@@ -18,7 +18,7 @@
 - **MLM Management System:** Multi-Level Marketing platform built using Core PHP.
 - **E-commerce Management System:** Scalable e-commerce application using PHP.
 - **Global Online Business Platform:** An advanced PHP-based global business tool.
-- **School Management System:** Comprehensive PHP-based school automation system.
+- **School Management System:** Comprehensive PHP-based school automation system..
 
 ---
 
