@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; }
+
+  .banner {
+    width: 100%;
+    background: #0d1117;
+    padding: 24px 40px 22px 44px;
+    border-left: 4px solid #e6edf3;
+  }
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid #30363d;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 0.1s forwards;
+  }
+
+  .top-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #3d444d;
+  }
+
+  .badge {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #3fb950;
+    border: 0.5px solid #3fb950;
+    padding: 3px 10px;
+    border-radius: 20px;
+    animation: pulse 2.5s ease-in-out 2s infinite;
+  }
+
+  .main-row {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .col-photo {
+    flex: 0 0 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 28px;
+    border-right: 0.5px solid #21262d;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+  }
+
+  .photo-frame {
+    width: 88px;
+    height: 96px;
+    border-radius: 6px;
+    border: 0.5px solid #30363d;
+    overflow: hidden;
+    background: #161b22;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .avail-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .dot-green {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3fb950;
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  .avail-text {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: #3fb950;
+  }
+
+  .col-info {
+    flex: 1;
+    padding: 0 28px;
+    border-right: 0.5px solid #21262d;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.45s forwards;
+  }
+
+  .name-main {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #e6edf3;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    display: block;
+  }
+
+  .name-sub {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6e7681;
+    letter-spacing: 2.5px;
+    display: block;
+    min-height: 20px;
+    margin-top: 2px;
+  }
+
+  .divider-short {
+    width: 0;
+    height: 1.5px;
+    background: #e6edf3;
+    margin: 10px 0 9px 0;
+    animation: growShort 0.5s ease 1s forwards;
+  }
+
+  .role-wrap {
+    min-height: 17px;
+    margin-bottom: 10px;
+  }
+
+  .role-line {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    color: #6e7681;
+    letter-spacing: 2px;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.8em;
+    background: #e6edf3;
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 0.8s step-end infinite;
+  }
+
+  .location {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5px;
+    color: #484f58;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .location span { color: #6e7681; }
+
+  .tech-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    color: #3d444d;
+    margin-bottom: 7px;
+  }
+
+  .tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tech-pill {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    color: #8b949e;
+    border: 0.5px solid #30363d;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: #161b22;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .col-stats {
+    flex: 0 0 190px;
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.6s forwards;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #21262d;
+    border: 0.5px solid #21262d;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .stat {
+    background: #0d1117;
+    padding: 12px 6px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #e6edf3;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 1.2px;
+    color: #6e7681;
+    display: block;
+    margin-top: 3px;
+  }
+
+  .stat-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7.5px;
+    color: #3d444d;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 0.5px solid #30363d;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 2.6s forwards;
+  }
+
+  .footer-left {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+    color: #3d444d;
+  }
+  .footer-left span.ai { color: #8b949e; }
+
+  .footer-right {
+    font-family: Georgia, serif;
+    font-size: 9.5px;
+    color: #3d444d;
+    letter-spacing: 1px;
+  }
+
+  @keyframes blink    { 0%,100%{opacity:1} 50%{opacity:0} }
+  @keyframes fadeUp   { from{opacity:0;transform:translateY(7px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+  @keyframes growShort{ from{width:0} to{width:32px} }
+  @keyframes pulse    { 0%,100%{opacity:1} 50%{opacity:0.3} }
+</style>
+</head>
+<body>
+<div class="banner">
+
+  <div class="top-bar">
+    <div class="top-label">GITHUB &nbsp;/&nbsp; PROFILE &nbsp;/&nbsp; PORTFOLIO</div>
+    <div class="badge">&#x25CF;&nbsp; OPEN TO FREELANCE</div>
+  </div>
+
+  <div class="main-row">
+
+    <div class="col-photo">
+      <div class="photo-frame">
+        <img src="/mnt/user-data/uploads/MP.jpg" alt="Syed Amir Hayat"
+          onerror="this.style.display='none'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<svg width=\'32\' height=\'32\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#484f58\' stroke-width=\'1.2\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'"/>
+      </div>
+      <div class="avail-row">
+        <div class="dot-green"></div>
+        <div class="avail-text">AVAILABLE</div>
+      </div>
+    </div>
+
+    <div class="col-info">
+      <span class="name-main">Syed Amir Hayat</span>
+      <span class="name-sub" id="kakakhel"></span>
+      <div class="divider-short"></div>
+      <div class="role-wrap">
+        <span class="role-line" id="role-line"></span><span class="cursor" id="role-cursor"></span>
+      </div>
+      <div class="location">&#x25A0;&nbsp;<span>Nowshera, KP — Pakistan</span></div>
+      <div class="tech-label">TECH STACK</div>
+      <div class="tech-icons" id="tech-icons"></div>
+    </div>
+
+    <div class="col-stats">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-num" id="s1">0+</span>
+          <span class="stat-label">PROJECTS</span>
+          <span class="stat-sub">PHP &amp; Web</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="s2">0+</span>
+          <span class="stat-label">DEVELOPERS</span>
+          <span class="stat-sub">Trained</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="s3">0+</span>
+          <span class="stat-label">COURSES</span>
+          <span class="stat-sub">Taught</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" id="s4">0+</span>
+          <span class="stat-label">YEARS EXP</span>
+          <span class="stat-sub">Dev &amp; Teaching</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-bar">
+    <div class="footer-left">Currently exploring &nbsp;<span class="ai" id="ai-text"></span><span class="cursor" id="ai-cursor" style="opacity:0"></span></div>
+    <div class="footer-right">syedamir.com</div>
+  </div>
+
+</div>
+
+<script>
+  const techs = ['React', 'Node.js', 'Laravel', 'MongoDB', 'PHP', 'Python', 'MySQL', 'MERN', 'MEAN', 'AI'];
+  const tc = document.getElementById('tech-icons');
+  techs.forEach((t, i) => {
+    const p = document.createElement('div');
+    p.className = 'tech-pill';
+    p.textContent = t;
+    p.style.animationDelay = (1.5 + i * 0.07) + 's';
+    tc.appendChild(p);
+  });
+
+  function typeText(el, text, speed, onDone) {
+    let i = 0; el.textContent = '';
+    const timer = setInterval(() => {
+      el.textContent += text[i]; i++;
+      if (i >= text.length) { clearInterval(timer); if (onDone) onDone(); }
+    }, speed);
+  }
+
+  const roles = ['Full Stack Developer', 'MERN / MEAN Stack Developer', 'Laravel + React Expert', 'Python Developer', 'Agentic AI Student'];
+  let ri = 0;
+
+  function cycleRole() {
+    const el = document.getElementById('role-line');
+    const cur = document.getElementById('role-cursor');
+    const role = roles[ri % roles.length]; ri++;
+    let i = 0; el.textContent = '';
+    const typeIn = setInterval(() => {
+      el.textContent = role.substring(0, ++i);
+      if (i >= role.length) {
+        clearInterval(typeIn);
+        setTimeout(() => {
+          let j = role.length;
+          const eraseOut = setInterval(() => {
+            el.textContent = role.substring(0, --j);
+            if (j <= 0) { clearInterval(eraseOut); setTimeout(cycleRole, 280); }
+          }, 36);
+        }, 1600);
+      }
+    }, 54);
+  }
+
+  function countUp(id, target, dur, sfx) {
+    const el = document.getElementById(id);
+    let v = 0;
+    const step = Math.ceil(target / (dur / 28));
+    const t = setInterval(() => {
+      v = Math.min(v + step, target);
+      el.textContent = v + sfx;
+      if (v >= target) clearInterval(t);
+    }, 28);
+  }
+
+  setTimeout(() => typeText(document.getElementById('kakakhel'), 'Kakakhel', 85, () => setTimeout(cycleRole, 280)), 650);
+
+  setTimeout(() => {
+    countUp('s1', 100, 750, '+');
+    setTimeout(() => countUp('s2', 200, 850, '+'), 140);
+    setTimeout(() => countUp('s3', 20, 550, '+'), 280);
+    setTimeout(() => countUp('s4', 7, 380, '+'), 420);
+  }, 1950);
+
+  setTimeout(() => {
+    const aiEl = document.getElementById('ai-text');
+    const aiCur = document.getElementById('ai-cursor');
+    aiCur.style.opacity = '1';
+    typeText(aiEl, 'Agentic AI  ·  AI Development  ·  AI Creator', 40, () => { aiCur.style.opacity = '0'; });
+  }, 2550);
+</script>
+</body>
+</html>
