@@ -2,9 +2,9 @@
   <img src="https://raw.githubusercontent.com/ITSAAMI/itsaami/main/banner_animated.gif" alt="Syed Amir Hayat" width="900"/>
 </p>
 
-<a href="https://github.com/itsaami">
+<!-- <a href="https://github.com/itsaami">
     <img src="https://readme-typing-svg.herokuapp.com/?lines=💻+Full+Stack+Developer;👨‍🏫+Programming+Instructor+%26+Mentor;🚀+Building+MERN+%26+Laravel+Projects;🎯+Turning+Ideas+into+Code&font=Roboto&size=28&duration=3500&pause=500&center=true&vCenter=true&width=700&height=60&color=007bff">
-</a>
+</a> -->
 
 <h3 align="center">Full Stack Developer & Programming Instructor from Pakistan — building real-world web applications and helping students grow into developers.</h3>
 
